@@ -1,0 +1,303 @@
+\documentclass[11pt]{article}
+\usepackage{xltxtra}
+\usepackage{bookmark}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{xcolor}
+\usepackage{calc}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\usepackage{relsize}
+\usepackage{xspace}
+\usepackage{fontawesome5}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{siunitx}
+\usepackage{amssymb}
+\usepackage{tabularx}
+\usepackage{multicol}
+\usepackage{fancybox}
+\usepackage{float}
+\hypersetup{hidelinks}
+\usepackage{url}
+\urlstyle{tt}
+\usetikzlibrary{calc}
+
+%%%%%%%%%%%%%%%%%%%%
+% 设置
+%%%%%%%%%%%%%%%%%%%%
+
+\protected\def\Cpp{{C\nolinebreak[4]\hspace{-.05em}\raisebox{.28ex}{\relsize{-1}++}}\xspace}	% 这是个更好看的 C++ 写法，可以使用 \Cpp 来代替出文本的 C++
+
+\setlength{\parindent}{0pt}							% 取消全局段落缩进
+\pagenumbering{gobble}								% 取消页码显示
+\setlist[itemize]{leftmargin=*}		
+\setlist[enumerate]{leftmargin=*}	
+% 这里把表格的行间距调成1.2倍了
+\renewcommand{\arraystretch}{1.2}
+% 这里把正文的行间距调成1.2倍了
+\linespread{1.2}
+
+\titleformat{\section}					    % 将原标题前面的数字取消了
+  {\LARGE\bfseries\raggedright} 		      % 字体改为LARGE，bold，左对齐
+  {}{0em}                      			  % 可用于添加全局标题前缀
+  {}                           			  % 可用于添加代码
+  [{\color{secondary_color}\titlerule}]     % 标题下方加一条线
+\titlespacing*{\section}{0cm}{*1.2}{*1.2}	% 标题左边留白，上方1.2倍，下方1.2倍
+
+\titleformat{\subsection}				    % 将原二级标题前面的数字取消了
+  {\large\bfseries\raggedright} 		      % 字体改为large，bold，左对齐
+  {}{0em}                      			  % 可用于添加全局二级标题前缀
+  {}                           			  % 可用于添加代码
+  []
+\titlespacing*{\subsection}{0cm}{*1.2}{*1.2}% 二级标题左边留白，上方1.2倍，下方1.2倍
+% 页面大小与页边距，按需求调整
+
+\usepackage[
+	a4paper,
+	left=1.2cm,
+	right=1.2cm,
+	top=1.5cm,
+	bottom=1cm,
+	nohead
+]{geometry}
+
+% 英文字体
+\setmainfont[
+    Path=fonts/,
+    Extension=.otf,
+    BoldFont=*-Bold,
+]{NotoSerifSC}
+% 中文字体
+\setCJKmainfont[
+    Path=fonts/,
+    Extension=.otf,
+    BoldFont=*-Bold,
+]{NotoSerifSC}
+
+% 自定义颜色（参考 https://github.com/seumxc/SEU-Logo）
+% 东大绿
+\definecolor{primary_color}{RGB}{63, 97, 21}
+% 东大黄
+\definecolor{secondary_color}{RGB}{255, 204, 0}
+
+%%%%%%%%%%%%%%%%%%%%
+% 文章内容
+%%%%%%%%%%%%%%%%%%%%
+
+% 学院
+\newcommand{\school}{自动化学院 | School of Automation} 
+
+% 联系方式
+\newcommand{\contact}{
+    % 根据个人喜好选择字号
+    % \small              % 小
+    % \footnotesize       % 更小
+    \scriptsize             % 再小一号
+    \textcolor{white}{
+        % 邮箱
+        \faEnvelope \quad \href{mailto:youremail@seu.edu.cn}{youremail@seu.edu.com}
+        \hspace{4em}
+        % 手机号
+        \faPhone \quad  130-6666-0000
+        % 别的联系方式，如微信、GitHub等
+        % \hspace{4em}
+        % \faGithub \quad \href{https://github.com/xxxx}{https://github.com/xxxx}
+    }
+}
+
+\begin{document}
+
+    %%%%%%%%%%%%%%%%%%%%
+    % 页眉、页脚和背景（如果有多页简历，请把页眉页脚和背景复制粘贴到第二页的内容之前）
+    %%%%%%%%%%%%%%%%%%%%
+
+    % 页眉：校标组合+学院名
+    \begin{tikzpicture}[remember picture, overlay]
+        \node[anchor=north, inner sep=0pt](header) at (current page.north){
+            \includegraphics[width=\paperwidth]{images/header-darkgreen.png}
+        };
+        \node[anchor=west](school_logo) at (header.west){
+            \hspace{0.5cm}
+            \includegraphics[width=0.2\textwidth]{images/banner-white.png}
+        };
+        \node[anchor=east](school_name) at(header.east){
+            \textcolor{white}{\textbf{\school}}
+            \hspace{0.5cm}
+        };
+    \end{tikzpicture}
+    \vspace{-3.5em}
+
+    % 页脚，联系方式
+    \begin{tikzpicture}[remember picture, overlay]
+        \node[anchor=south, inner sep=0pt](footer) at (current page.south){
+            \includegraphics[width=\paperwidth]{images/footer-darkgreen.png}
+        };
+        % 联系方式
+        \node[anchor=center] at(footer.center){\contact};
+    \end{tikzpicture}
+
+    % 背景
+    \begin{tikzpicture}[remember picture, overlay]
+        \node[opacity=0.05] at(current page.center){
+            \includegraphics[width=0.7\paperwidth, keepaspectratio]{images/logo-yellow.png}
+        };
+    \end{tikzpicture}
+
+    %%%%%%%%%%%%%%%%%%%%
+    % 简历正文
+    %%%%%%%%%%%%%%%%%%%%
+
+    \begin{figure}[h]
+        % 左半边，信息，比例占行宽78%
+        % 合并了个人信息和教育背景部分，以便插入更大的照片
+        \begin{minipage}[t]{0.78\textwidth}
+            % 个人信息
+            % \faGraduationCap这类\fa开头的都是font awesome里的logo，想换成其他logo的话，可以看一下附带的fontawsome.pdf，自行替换。
+            \section{\makebox[\widthof{\faAddressCard}][c]{\color{primary_color}{\faAddressCard}}\quad 个人信息}
+            \begin{tabularx}{\linewidth}{p{\widthof{出生日期:}}Xp{\widthof{政治面貌:}}X}
+                姓\ \ \ \ \ \ \ \ 名: & 你的名字 & 
+                性\ \ \ \ \ \ \ \ 别: & 你的性别 \\
+                出生年月: & 你的出生年月 & 
+                政治面貌: & 你的政治面貌 \\
+                %% 想多加几行的话，就按上面的格式自行补充
+                %% 想加粗的话\textbf{}
+                %% 想多加几列的话，把\begin{tabularx}{\textwidth}{这里}的内容改一下，可以自己搜一下tabularx怎么用，也可以问gpt/文心一言/讯飞。
+            \end{tabularx}
+            
+            \vspace{0.2em}
+    
+            % 教育背景
+            \section{\makebox[\widthof{\faGraduationCap}][c]{\color{primary_color}{\faGraduationCap}}\quad 教育背景}
+            
+            {\large \textbf{东南大学}}，专科 \hfill {江苏，南京} \\
+            {{你所在的学院}}，专业：你的专业 \hfill {2000年9月-2010年6月} \\
+            {主修课程}：课程1、课程2、课程3、课程4\ 等。
+            
+            \vspace{0.5em}
+            {\large \textbf{东南大学}}，本科 \hfill {江苏，南京} \\
+            {{你所在的学院}}，专业：你的专业 \hfill {2010年9月-2020年6月} \\
+            \textbf{主修课程}：课程1、课程2、课程3、课程4\ 等。
+            
+            \vspace{0.5em}
+            {\large \textbf{东南大学}}，硕士 \hfill {江苏，南京} \\
+            {{某些学院}}，导师：\href{导师的个人主页.site}{导师名字}\ 导师职称 \hfill {2020年9月-至今} \\
+            \textbf{研究方向}：方向1、方向2、方向3、方向4\ 等。
+        \end{minipage}
+        \hfill
+        % 右半边，照片，比例占行宽20%
+        \begin{minipage}[t]{0.2\textwidth}
+            \vspace{2em}
+            \setlength{\fboxsep}{0pt}
+            \doublebox{\includegraphics[width=\linewidth]{images/avatar.png}}
+        \end{minipage}
+    \end{figure}
+    \vspace{-1em}
+
+    % 科研成果
+    \section{\makebox[\widthof{\faGraduationCap}][c]{\color{primary_color}{\faGraduationCap}}\quad 科研成果}
+
+    % 科研著作（研究生）
+    This is One of Your Paper Published in Conference A. \\
+    \textbf{Mingzi Nide}, Daoshi Nide. \hfill 
+    发表于 \textbf{Conference A}（CCF-A类会议） 
+
+    \vspace{0.5em}
+    This is Another Paper. \\
+    \textbf{Mingzi Nide}, Shidi Nide, Daoshi Nide. \hfill 
+    发表于 \textbf{Conference B} （CCF-A类会议）
+
+    \vspace{0.5em}
+    This is A Journal Paper.\\
+    \textbf{Mingzi Nide}, Shixiong Nide, Daoshi Nide. \hfill 
+    发表于 \textbf{Journal C} （SCI-1区）
+
+    % 项目经历\科研经历\项目与教学（标题请根据需要修改）
+    \section{\makebox[\widthof{\faChalkboardTeacher}][c]{\color{primary_color}{\faChalkboardTeacher}}\quad 项目与教学}
+    % \vspace{0.5em}
+    {\large{\textbf{项目名称}}} \hfill {横向/纵向项目-已完结/进行中}\\
+    \textbf{你在项目中扮演的角色} \hfill 2020年9月至2021年9月\\
+    项目简介。
+
+    \vspace{0.5em}
+    {\large{\textbf{某某主题讨论班}}}，主讲/参与 \hfill {2020年夏季}\\
+    主要内容：内容1，内容2，内容3\ 等。
+    
+    \vspace{0.5em}
+    {\large{\textbf{课程名称}}}，助教 \hfill {2021年夏季}\\
+    主要内容：内容1，内容2，内容3\ 等。
+    
+    % 如果每行的内容不是很多，可以考虑使用 minipage，将内容分列展示
+    \begin{minipage}[t]{0.6\textwidth}
+        \section{\makebox[\widthof{\faWrench}][c]{\color{primary_color}{\faWrench}}\quad 技能特长}
+        \begin{itemize}
+            \item 熟练使用 Python、Golang、Rust 等编程语言。
+            \item 熟练使用 Tensorflow、Pytorch 等深度学习框架。
+            \item 熟悉 Windows 与 Linux 端开发。
+        \end{itemize}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.35\textwidth}
+        \section{\makebox[\widthof{\faStar}][c]{\color{primary_color}{\faStar}}\quad 兴趣爱好}
+        \begin{itemize}
+            \item 我喜欢唱
+            \item 跳
+            \item Rap
+            \item 篮球
+        \end{itemize}
+    \end{minipage}
+    
+    % \newpage
+    % % 如有需要，可以添加额外的页面。不要忘记添加页眉页脚和背景相关的代码。
+
+    % % 竞赛经历
+    % \section{\makebox[\widthof{\faTrophy}][c]{\color{primary_color}{\faTrophy}}\quad 竞赛经历}
+    % \begin{table}[h!]
+    %     \begin{tabularx}{\textwidth}{Xp{\widthof{第零负责人}}p{\widthof{国家级-第100名}}p{\widthof{2030年13月}}}
+    %         \textbf{比赛1} & 第一负责人 & 国家级-第10名 & 2023年4月 \\
+    %         \textbf{比赛2} & 个人参赛 & 国家级-一等奖 & 2023年8月\\
+    %         \textbf{比赛3} & 个人参赛 & 省级-一等奖 & 2022年12月\\
+    %         % 同理，可以自己加
+    %     \end{tabularx}
+    % \end{table}
+
+    % % 技能特长
+    % \section{\makebox[\widthof{\faWrench}][c]{\color{primary_color}{\faWrench}}\quad 技能特长}
+    % \begin{itemize}
+    %     \item 熟练使用\Cpp 、Python、Matlab编程语言。
+    %     \item 熟悉Windows与Linux端开发。
+    %     \item 熟练使用Tensorflow，Pytorch等深度学习框架。
+    %     \item 熟练掌握\Cpp 与Python环境下OpenCV与Qt应用的开发，且熟练使用Qt Creator软件。
+    %     \item 熟练使用Altium Designer与LCEDA进行封装绘制与板子设计。
+    %     \item 熟练使用Keil，Arduino IDE等集成开发软件。
+    %     \item 了解模式识别，强化学习，遗传算法，知识蒸馏等相关概念。
+    % \end{itemize}
+
+    % % 所获荣誉
+    % \section{\makebox[\widthof{\faStar}][c]{\color{primary_color}{\faStar}}\quad 所获荣誉}
+    % \begin{multicols}{2}
+    %     \begin{itemize}
+    %         \item 某年学业先进个人
+    %         \item 某年某奖学金某等奖
+    %         \item 某大使
+    %         \item 某年某奖学金某等奖
+    %         \item 某年优秀团员称号
+    %         \item 某年某称号
+    %     \end{itemize}
+    % \end{multicols}
+
+    % % 其他
+    % \section{\makebox[\widthof{\faInfo}][c]{\color{primary_color}{\faInfo}}\quad 其他}
+    % \begin{itemize}
+    %     \item 英语水平-CET6级xxx分
+    %     \item 计算机几级证书
+    %     \item xx几级证书
+    %     \item 技术博客: 某网址
+    %     \item 教师资格证：xxx
+    %     \item 普通话证书：几级几等
+    %     \item 文字排版：\LaTeX
+    % \end{itemize}
+
+\end{document}
