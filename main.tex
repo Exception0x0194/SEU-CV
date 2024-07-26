@@ -128,20 +128,28 @@
     % 简历正文
     %%%%%%%%%%%%%%%%%%%%
 
-    \begin{minipage}[b]{\textwidth} % 为了方便排版，将双栏内容装在一个额外的 minipage 中
     \begin{minipage}[t]{0.78\textwidth}
         % 个人信息
         % \faGraduationCap这类\fa开头的都是font awesome里的logo，想换成其他logo的话，可以看一下附带的fontawsome.pdf，自行替换。
+        \begin{minipage}[t]{\textwidth}
         \section{\makebox[\widthof{\faAddressCard}][c]{\color{primary_color}{\faAddressCard}}\quad 个人信息}
-        \begin{tabularx}{\linewidth}{p{\widthof{出生日期:}}Xp{\widthof{政治面貌:}}X}
-            姓\ \ \ \ \ \ \ \ 名: & 你的名字 & 
-            性\ \ \ \ \ \ \ \ 别: & 你的性别 \\
-            出生年月: & 你的出生年月 & 
-            政治面貌: & 你的政治面貌 \\
-            %% 想多加几行的话，就按上面的格式自行补充
-        \end{tabularx} \ % 这里添加了一个空格，为了让表格后的行间距和普通段落相同
+        \begin{minipage}[t]{0.5\textwidth}
+            \textbf{姓\ \ \ \ \ \ \ \ 名}：你的名字
+            
+            \vspace{0.5em}
+            \textbf{出生年月}：你的出生日期
+        \end{minipage}
+        \begin{minipage}[t]{0.35\textwidth}
+            \textbf{性\ \ \ \ \ \ \ \ 别}：沃尔玛购物袋
+            
+            \vspace{0.5em}
+            \textbf{政治面貌}：你的政治面貌
+        \end{minipage}
+        \vspace{1.2em}
+        \end{minipage}
 
         % 教育背景
+        \begin{minipage}[t]{\textwidth}
         \section{\makebox[\widthof{\faGraduationCap}][c]{\color{primary_color}{\faGraduationCap}}\quad 教育背景}
         
         {\large \textbf{东南大学}}，专科 \hfill {江苏，南京} \\
@@ -157,6 +165,8 @@
         {\large \textbf{东南大学}}，硕士 \hfill {江苏，南京} \\
         {{某些学院}}，导师：\href{导师的个人主页.site}{导师名字}\ 导师职称 \hfill {2020年9月-至今} \\
         \textbf{研究方向}：方向1、方向2、方向3、方向4\ 等。
+        \vspace{1.2em}
+        \end{minipage}
     \end{minipage}
     \hfill
     % 右半边，照片，比例占行宽20%
@@ -164,9 +174,9 @@
         \vspace{2em} % 照片上侧内容
         \setlength{\fboxsep}{0pt}
         \doublebox{\includegraphics[width=\linewidth]{images/avatar.png}}
-    \end{minipage}        
-    \end{minipage} \ % 这里添加了一个空格，为了让 minipage 后的行间距和普通段落相同
+    \end{minipage}
 
+    \begin{minipage}[t]{\textwidth}
     % 科研成果
     \section{\makebox[\widthof{\faGraduationCap}][c]{\color{primary_color}{\faGraduationCap}}\quad 科研成果}
 
@@ -181,13 +191,16 @@
     发表于 \textbf{Conference B} （CCF-A类会议）
 
     \vspace{0.5em}
-    This is A Journal Paper.\\
-    \textbf{Mingzi Nide}, Shixiong Nide, Daoshi Nide. \hfill 
-    发表于 \textbf{Journal C} （SCI-1区）
+    《另一份论文的标题》\\
+    \textbf{你的名字}、你的师兄、你的导师 \hfill 
+    发表于 \textbf{某篇期刊} （SCI-1区）
+    \vspace{1.2em}
+    \end{minipage}
 
+    \begin{minipage}[t]{\textwidth}
     % 项目经历\科研经历\项目与教学（标题请根据需要修改）
     \section{\makebox[\widthof{\faChalkboardTeacher}][c]{\color{primary_color}{\faChalkboardTeacher}}\quad 项目与教学}
-    % \vspace{0.5em}
+    
     {\large{\textbf{项目名称}}} \hfill {横向/纵向项目-已完结/进行中}\\
     \textbf{你在项目中扮演的角色} \hfill 2020年9月至2021年9月\\
     项目简介。
@@ -199,12 +212,14 @@
     \vspace{0.5em}
     {\large{\textbf{课程名称}}}，助教 \hfill {2021年夏季}\\
     主要内容：内容1，内容2，内容3\ 等。
+    \vspace{1.2em}
+    \end{minipage}
     
     % 如果每行的内容不是很多，可以考虑使用 minipage，将内容分列展示
     \begin{minipage}[t]{0.6\textwidth}
         \section{\makebox[\widthof{\faWrench}][c]{\color{primary_color}{\faWrench}}\quad 技能特长}
         \begin{itemize}
-            \item 熟练使用 Python、Golang、Rust 等编程语言。
+            \item 熟练使用 Python、Jvav、Rust 等编程语言。
             \item 熟练使用 Tensorflow、Pytorch 等深度学习框架。
             \item 熟悉 Windows 与 Linux 端开发。
         \end{itemize}
