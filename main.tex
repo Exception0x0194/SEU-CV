@@ -128,7 +128,8 @@
     % 简历正文
     %%%%%%%%%%%%%%%%%%%%
 
-    \begin{minipage}[b]{0.78\textwidth}
+    \begin{minipage}[b]{\textwidth} % 为了方便排版，将双栏内容装在一个额外的 minipage 中
+    \begin{minipage}[t]{0.78\textwidth}
         % 个人信息
         % \faGraduationCap这类\fa开头的都是font awesome里的logo，想换成其他logo的话，可以看一下附带的fontawsome.pdf，自行替换。
         \section{\makebox[\widthof{\faAddressCard}][c]{\color{primary_color}{\faAddressCard}}\quad 个人信息}
@@ -156,14 +157,15 @@
         {\large \textbf{东南大学}}，硕士 \hfill {江苏，南京} \\
         {{某些学院}}，导师：\href{导师的个人主页.site}{导师名字}\ 导师职称 \hfill {2020年9月-至今} \\
         \textbf{研究方向}：方向1、方向2、方向3、方向4\ 等。
-    \end{minipage}  \ % 这里添加了一个空格，为了让 minipage 后的行间距和普通段落相同
+    \end{minipage}
     \hfill
     % 右半边，照片，比例占行宽20%
-    \begin{minipage}[b]{0.2\textwidth}
+    \begin{minipage}[t]{0.2\textwidth}
+        \vspace{2em} % 照片上侧内容
         \setlength{\fboxsep}{0pt}
         \doublebox{\includegraphics[width=\linewidth]{images/avatar.png}}
-        \vspace{11em} % 照片下方的空白区域，需要随照片高度调整
-    \end{minipage}
+    \end{minipage}        
+    \end{minipage} \ % 这里添加了一个空格，为了让 minipage 后的行间距和普通段落相同
 
     % 科研成果
     \section{\makebox[\widthof{\faGraduationCap}][c]{\color{primary_color}{\faGraduationCap}}\quad 科研成果}
