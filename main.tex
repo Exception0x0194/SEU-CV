@@ -1,5 +1,4 @@
 \documentclass[11pt]{article}
-\usepackage{xltxtra}
 \usepackage{bookmark}
 \usepackage{hyperref}
 \usepackage{multicol}
@@ -8,7 +7,6 @@
 \usepackage{graphicx}
 \usepackage{tikz}
 \usepackage{fontspec}
-\usepackage{xeCJK}
 \usepackage{relsize}
 \usepackage{xspace}
 \usepackage{fontawesome5}
@@ -20,8 +18,8 @@
 \usepackage{multicol}
 \usepackage{fancybox}
 \usepackage{float}
-\hypersetup{hidelinks}
 \usepackage{url}
+\hypersetup{hidelinks}
 \urlstyle{tt}
 \usetikzlibrary{calc}
 
@@ -41,14 +39,7 @@
   {}{0em}                      			  % 可用于添加全局标题前缀
   {}                           			  % 可用于添加代码
   [{\color{secondary_color}\titlerule}]     % 标题下方加一条线
-\titlespacing*{\section}{0cm}{*1.2}{*1.2}	% 标题左边留白，上方 1.2 倍，下方 1.2 倍
-
-\titleformat{\subsection}				    % 将原二级标题前面的数字取消了
-  {\large\bfseries\raggedright} 		      % 字体改为 large，bold，左对齐
-  {}{0em}                      			  % 可用于添加全局二级标题前缀
-  {}                           			  % 可用于添加代码
-  []
-\titlespacing*{\subsection}{0cm}{*1.2}{*1.2}% 二级标题左边留白，上方 1.2 倍，下方 1.2 倍
+\titlespacing*{\section}{0cm}{*1.2}{*1.5}	% 标题左边留白，上方 1.2 倍，下方 1.5 倍
 
 \usepackage[
 	a4paper,
@@ -59,24 +50,16 @@
 	nohead
 ]{geometry}                                 % 页面边距设置
 
-% 英文字体
+% 字体设置
 \setmainfont[
-    Path=fonts/,
-    Extension=.otf,
-    BoldFont=*-Bold,
-]{NotoSerifSC}
-% 中文字体
-\setCJKmainfont[
     Path=fonts/,
     Extension=.otf,
     BoldFont=*-Bold,
 ]{NotoSerifSC}
 
 % 自定义颜色（参考 https://github.com/seumxc/SEU-Logo）
-% 东大绿
-\definecolor{primary_color}{RGB}{63, 97, 21}
-% 东大黄
-\definecolor{secondary_color}{RGB}{255, 204, 0}
+\definecolor{primary_color}{RGB}{63, 97, 21}    % 松针绿
+\definecolor{secondary_color}{RGB}{255, 204, 0} % 金陵黄
 
 %%%%%%%%%%%%%%%%%%%%
 % 文章内容
@@ -88,8 +71,8 @@
 % 联系方式
 \newcommand{\contact}{
     % 根据个人喜好选择字号
-    % \small              % 小
-    % \footnotesize       % 更小
+    % \small                % 小
+    % \footnotesize         % 更小
     \scriptsize             % 再小一号
     \textcolor{white}{
         % 邮箱
@@ -145,51 +128,42 @@
     % 简历正文
     %%%%%%%%%%%%%%%%%%%%
 
-    \begin{figure}[h]
-        % 左半边，信息，比例占行宽78%
-        % 合并了个人信息和教育背景部分，以便插入更大的照片
-        \begin{minipage}[t]{0.78\textwidth}
-            % 个人信息
-            % \faGraduationCap这类\fa开头的都是font awesome里的logo，想换成其他logo的话，可以看一下附带的fontawsome.pdf，自行替换。
-            \section{\makebox[\widthof{\faAddressCard}][c]{\color{primary_color}{\faAddressCard}}\quad 个人信息}
-            \begin{tabularx}{\linewidth}{p{\widthof{出生日期:}}Xp{\widthof{政治面貌:}}X}
-                姓\ \ \ \ \ \ \ \ 名: & 你的名字 & 
-                性\ \ \ \ \ \ \ \ 别: & 你的性别 \\
-                出生年月: & 你的出生年月 & 
-                政治面貌: & 你的政治面貌 \\
-                %% 想多加几行的话，就按上面的格式自行补充
-                %% 想加粗的话\textbf{}
-                %% 想多加几列的话，把\begin{tabularx}{\textwidth}{这里}的内容改一下，可以自己搜一下tabularx怎么用，也可以问gpt/文心一言/讯飞。
-            \end{tabularx}
-            
-            \vspace{0.2em}
-    
-            % 教育背景
-            \section{\makebox[\widthof{\faGraduationCap}][c]{\color{primary_color}{\faGraduationCap}}\quad 教育背景}
-            
-            {\large \textbf{东南大学}}，专科 \hfill {江苏，南京} \\
-            {{你所在的学院}}，专业：你的专业 \hfill {2000年9月-2010年6月} \\
-            {主修课程}：课程1、课程2、课程3、课程4\ 等。
-            
-            \vspace{0.5em}
-            {\large \textbf{东南大学}}，本科 \hfill {江苏，南京} \\
-            {{你所在的学院}}，专业：你的专业 \hfill {2010年9月-2020年6月} \\
-            \textbf{主修课程}：课程1、课程2、课程3、课程4\ 等。
-            
-            \vspace{0.5em}
-            {\large \textbf{东南大学}}，硕士 \hfill {江苏，南京} \\
-            {{某些学院}}，导师：\href{导师的个人主页.site}{导师名字}\ 导师职称 \hfill {2020年9月-至今} \\
-            \textbf{研究方向}：方向1、方向2、方向3、方向4\ 等。
-        \end{minipage}
-        \hfill
-        % 右半边，照片，比例占行宽20%
-        \begin{minipage}[t]{0.2\textwidth}
-            \vspace{2em}
-            \setlength{\fboxsep}{0pt}
-            \doublebox{\includegraphics[width=\linewidth]{images/avatar.png}}
-        \end{minipage}
-    \end{figure}
-    \vspace{-1em}
+    \begin{minipage}[b]{0.78\textwidth}
+        % 个人信息
+        % \faGraduationCap这类\fa开头的都是font awesome里的logo，想换成其他logo的话，可以看一下附带的fontawsome.pdf，自行替换。
+        \section{\makebox[\widthof{\faAddressCard}][c]{\color{primary_color}{\faAddressCard}}\quad 个人信息}
+        \begin{tabularx}{\linewidth}{p{\widthof{出生日期:}}Xp{\widthof{政治面貌:}}X}
+            姓\ \ \ \ \ \ \ \ 名: & 你的名字 & 
+            性\ \ \ \ \ \ \ \ 别: & 你的性别 \\
+            出生年月: & 你的出生年月 & 
+            政治面貌: & 你的政治面貌 \\
+            %% 想多加几行的话，就按上面的格式自行补充
+        \end{tabularx} \ % 这里添加了一个空格，为了让表格后的行间距和普通段落相同
+
+        % 教育背景
+        \section{\makebox[\widthof{\faGraduationCap}][c]{\color{primary_color}{\faGraduationCap}}\quad 教育背景}
+        
+        {\large \textbf{东南大学}}，专科 \hfill {江苏，南京} \\
+        {{你所在的学院}}，专业：你的专业 \hfill {2000年9月-2010年6月} \\
+        {主修课程}：课程1、课程2、课程3、课程4\ 等。
+        
+        \vspace{0.5em}
+        {\large \textbf{东南大学}}，本科 \hfill {江苏，南京} \\
+        {{你所在的学院}}，专业：你的专业 \hfill {2010年9月-2020年6月} \\
+        \textbf{主修课程}：课程1、课程2、课程3、课程4\ 等。
+        
+        \vspace{0.5em}
+        {\large \textbf{东南大学}}，硕士 \hfill {江苏，南京} \\
+        {{某些学院}}，导师：\href{导师的个人主页.site}{导师名字}\ 导师职称 \hfill {2020年9月-至今} \\
+        \textbf{研究方向}：方向1、方向2、方向3、方向4\ 等。
+    \end{minipage}  \ % 这里添加了一个空格，为了让 minipage 后的行间距和普通段落相同
+    \hfill
+    % 右半边，照片，比例占行宽20%
+    \begin{minipage}[b]{0.2\textwidth}
+        \setlength{\fboxsep}{0pt}
+        \doublebox{\includegraphics[width=\linewidth]{images/avatar.png}}
+        \vspace{11em} % 照片下方的空白区域，需要随照片高度调整
+    \end{minipage}
 
     % 科研成果
     \section{\makebox[\widthof{\faGraduationCap}][c]{\color{primary_color}{\faGraduationCap}}\quad 科研成果}
