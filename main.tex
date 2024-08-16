@@ -6,10 +6,14 @@
 \usepackage{graphicx}
 \usepackage{tikz}
 \usepackage{fontspec}
-\usepackage{fontawesome5}
 \usepackage{titlesec}
 \usepackage{enumitem}
 \usepackage{fancybox}
+
+% 使用了 Google Fonts 的 Material Symbols，可以在
+% https://fonts.google.com/icons 查找图标在文中使用，比如
+% "Check Circle" 图标可以通过 \mSymbol{check-circle} 命令绘制
+\usepackage{material-symbols}
 
 \hypersetup{hidelinks}
 
@@ -66,18 +70,16 @@
 % 联系方式
 \newcommand{\contact}{
     % 根据个人喜好选择字号
-    % \small                % 小
-    \footnotesize           % 更小
-    % \scriptsize           % 再小一号
+    \footnotesize
     \textcolor{white}{
         % 邮箱
-        \href{mailto:youremail@seu.edu.cn}{\faEnvelope\quad youremail@seu.edu.com}
+        \href{mailto:youremail@seu.edu.cn}{{\normalsize\mSymbol{mail}}\quad youremail@seu.edu.com}
         \hspace{4em}
         % 手机号
-        \href{tel:130-6666-0000}{\faPhone\quad 130-6666-0000}
+        \href{tel:130-6666-0000}{{\normalsize\mSymbol{call}}\quad 130-6666-0000}
         % 别的联系方式，如微信、GitHub等
         \hspace{4em}
-        \href{https://github.com/Exception0x0194/SEU-CV}{\faGithub\quad GitHub 项目地址}
+        \href{https://github.com/Exception0x0194/SEU-CV}{{\normalsize\mSymbol{package-2}}\quad GitHub 项目地址}
     }
 }
 
@@ -125,9 +127,8 @@
 
     \begin{minipage}[t]{0.78\textwidth}
         % 个人信息
-        % \faGraduationCap这类\fa开头的都是font awesome里的logo，想换成其他logo的话，可以看一下附带的fontawsome.pdf，自行替换。
         \begin{minipage}[t]{\textwidth}
-        \section[个人信息]{\makebox[\iconwidth][c]{\color{primary_color}{\faAddressCard}}\quad 个人信息}
+        \section[个人信息]{\makebox[\iconwidth][c]{\color{primary_color}{\Huge\mSymbol{badge}}}\quad 个人信息}
         \begin{minipage}[t]{0.5\textwidth}
             \textbf{姓\qquad 名}：你的名字
             
@@ -145,7 +146,7 @@
 
         % 教育背景
         \begin{minipage}[t]{\textwidth}
-        \section[教育背景]{\makebox[\iconwidth][c]{\color{primary_color}{\faGraduationCap}}\quad 教育背景}
+        \section[教育背景]{\makebox[\iconwidth][c]{\color{primary_color}{\Huge\mSymbol{school}}}\quad 教育背景}
         
         {\large \textbf{东南大学}}，专科 \hfill 2000年9月--2010年6月
         \begin{itemize}
@@ -181,7 +182,7 @@
 
     \begin{minipage}[t]{\textwidth}
     % 科研成果
-    \section[科研成果]{\makebox[\iconwidth][c]{\color{primary_color}{\faAtom}}\quad 科研成果}
+    \section[科研成果]{\makebox[\iconwidth][c]{\color{primary_color}{\Huge\mSymbol{contract-edit}}}\quad 科研成果}
 
     % 科研著作（研究生）
     This is One of Your Paper Published in Conference A.
@@ -202,7 +203,7 @@
 
     \begin{minipage}[t]{\textwidth}
     % 项目经历\科研经历\项目与教学（标题请根据需要修改）
-    \section[项目与教学]{\makebox[\iconwidth][c]{\color{primary_color}{\faChalkboardTeacher}}\quad 项目与教学}
+    \section[项目与教学]{\makebox[\iconwidth][c]{\color{primary_color}{\Huge\mSymbol{co-present}}}\quad 项目与教学}
     
     {\large \textbf{项目名称}} \hfill 2020年9月--2021年9月
     \begin{itemize}
@@ -227,7 +228,7 @@
     
     % 如果每行的内容不是很多，可以考虑使用 minipage，将内容分列展示
     \begin{minipage}[t]{0.6\textwidth}
-        \section[技能特长]{\makebox[\iconwidth][c]{\color{primary_color}{\faWrench}}\quad 技能特长}
+        \section[技能特长]{\makebox[\iconwidth][c]{\color{primary_color}{\Huge\mSymbol{handyman}}}\quad 技能特长}
         \begin{itemize}
         \setlength{\itemsep}{0.5em}
             \item 熟练使用 Python、Jvav、Rust 等编程语言。
@@ -237,7 +238,7 @@
     \end{minipage}
     \hfill
     \begin{minipage}[t]{0.35\textwidth}
-        \section[兴趣爱好]{\makebox[\iconwidth][c]{\color{primary_color}{\faStar}}\quad 兴趣爱好}
+        \section[兴趣爱好]{\makebox[\iconwidth][c]{\color{primary_color}{\Huge\mSymbol{star}}}\quad 兴趣爱好}
         \begin{itemize}
         \setlength{\itemsep}{0.5em}
             \item 我喜欢唱
@@ -249,4 +250,5 @@
     
     % \newpage
     % % 如有需要，可以添加额外的页面。不要忘记添加页眉页脚和背景相关的代码。
+    
 \end{document}

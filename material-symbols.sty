@@ -1,0 +1,80 @@
+\ProvidesPackage{material-symbols}[2024/08/14 v0.0.1 Material Symbols]
+
+\RequirePackage{fontspec}
+\RequirePackage{xstring}
+\RequirePackage{pgfkeys}
+
+\newfontfamily{\MaterialSymbolsOutlined}[
+    Path=fonts/,
+    BoldFont=*,
+    ItailcFont=*,
+    BoldItalicFont=*,
+    Extension=.ttf,
+]{MaterialSymbolsOutlined-Regular}
+
+% \newfontfamily{\MaterialSymbolsRounded}[
+%     Path=fonts/,
+%     BoldFont=*,
+%     ItailcFont=*,
+%     BoldItalicFont=*,
+%     Extension=.ttf,
+% ]{MaterialSymbolsRounded-Regular}
+
+% \newfontfamily{\MaterialSymbolsSharp}[
+%     Path=fonts/,
+%     BoldFont=*,
+%     ItailcFont=*,
+%     BoldItalicFont=*,
+%     Extension=.ttf,
+% ]{MaterialSymbolsSharp-Regular}
+
+% \newfontfamily{\MaterialSymbolsOutlinedFilled}[
+%     Path=fonts/,
+%     BoldFont=*,
+%     ItailcFont=*,
+%     BoldItalicFont=*,
+%     Extension=.ttf,
+% ]{MaterialSymbolsOutlined_Filled-Regular}
+
+% \newfontfamily{\MaterialSymbolsRoundedFilled}[
+%     Path=fonts/,
+%     BoldFont=*,
+%     ItailcFont=*,
+%     BoldItalicFont=*,
+%     Extension=.ttf,
+% ]{MaterialSymbolsRounded_Filled-Regular}
+
+% \newfontfamily{\MaterialSymbolsSharpFilled}[
+%     Path=fonts/,
+%     BoldFont=*,
+%     ItailcFont=*,
+%     BoldItalicFont=*,
+%     Extension=.ttf,
+% ]{MaterialSymbolsSharp_Filled-Regular}
+
+
+\input{name-casting}
+
+\newcommand{\mSymbolCode}[2][regular]{%
+    {%
+        \IfEqCase{#1}{%
+            {outlined}{\MaterialSymbolsOutlined\symbol{"#2}}%
+            % {rounded}{\MaterialSymbolsRounded\symbol{"#2}}%
+            % {sharp}{\MaterialSymbolsSharp\symbol{"#2}}%
+            % {outlined-filled}{\MaterialSymbolsOutlinedFilled\symbol{"#2}}%
+            % {rounded-filled}{\MaterialSymbolsRoundedFilled\symbol{"#2}}%
+            % {sharp-filled}{\MaterialSymbolsSharpFilled\symbol{"#2}}%
+        }[\MaterialSymbolsOutlined\symbol{"#2}]%
+    }%
+}
+
+\newcommand{\mSymbol}[2][regular]{%
+  \makebox[0.5em]{
+  \raisebox{-0.3ex}{
+      \pgfkeysgetvalue{/mSymbols/#2}\tempSymbolCode%
+      \mSymbolCode[#1]{\tempSymbolCode}
+  }%
+  }
+}
+
+\endinput
