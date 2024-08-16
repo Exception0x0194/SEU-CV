@@ -1,6 +1,6 @@
 # SEU-CV：东南大学 LaTeX 中文简历模板
 
-![](./docs/CV-preview.jpg)
+![](./docs/CV-preview.webp)
 
 ## 简介
 
