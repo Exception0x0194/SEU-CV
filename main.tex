@@ -5,7 +5,7 @@
 \usepackage{calc}
 \usepackage{graphicx}
 \usepackage{tikz}
-\usepackage{fontspec}
+\usepackage[fontset=none]{ctex}
 \usepackage{titlesec}
 \usepackage{enumitem}
 \usepackage{fancybox}
@@ -51,6 +51,12 @@
     Path=fonts/,
     Extension=.otf,
     BoldFont=*-Bold,
+]{NotoSerifSC}
+
+\setCJKmainfont[
+Path=fonts/,
+Extension=.otf,
+BoldFont=*-Bold,
 ]{NotoSerifSC}
 
 % 自定义颜色（参考 https://github.com/seumxc/SEU-Logo）
@@ -188,7 +194,7 @@
     This is One of Your Paper Published in Conference A.
     \begin{itemize}
         \item \textbf{Mingzi Nide}, Daoshi Nide. \hfill 发表于 \textbf{Conference A}（CCF-A类会议）
-        \item 用一句话描述这份论文干了什么\dots\dots
+        \item 用一句话描述这份论文干了什么，更新后这段话就可以换行了，不信你看我现在测试的结果，如果还不信就自己写点有意义的话\dots\dots
     \end{itemize}
 
     \vspace{0.5em}
